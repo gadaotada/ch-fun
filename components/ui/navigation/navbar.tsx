@@ -1,10 +1,10 @@
 'use client';
 import { signOut } from "next-auth/react";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button";
-import { ModeToggle } from "@/components/ui/theme-toggle";
-import { ActiveChallenge } from "@/types";
+import { Avatar, AvatarImage } from "../../../components/ui/avatar"
+import { Button } from "../../../components/ui/button";
+import { ModeToggle } from "../../../components/ui/theme-toggle";
+import { ActiveChallenge } from "../../../types";
 import { ResetIcon } from "@radix-ui/react-icons";
 
 interface NavBarProps {
