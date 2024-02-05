@@ -2,7 +2,7 @@
 import { RowDataPacket,ResultSetHeader } from 'mysql2/promise';
 
 import pool from '../conn';
-import { timeStampGen } from '@/lib/helpers';
+import { timeStampGen } from '../../../lib/helpers';
 
 export const updateDailyStats = async (userId: number, daily_field: number | undefined, note: string): Promise<boolean>  => {
     const poolConn = await pool.getConnection();

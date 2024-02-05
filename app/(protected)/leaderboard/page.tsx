@@ -1,5 +1,5 @@
-import LeaderboardComp from "@/components/leaderboard/Leaderboard";
-import { getTotalStats } from "@/lib/database/data/actions-get";
+import LeaderboardComp from "../../../components/leaderboard/Leaderboard";
+import { getTotalStats } from "../../../lib/database/data/actions-get";
 
 export default async function LeaderboardPage () {
 

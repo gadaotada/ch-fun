@@ -1,14 +1,14 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import * as Yup from 'yup';
 
-import { updateDailyStats } from '@/lib/database/data/actions-mut';
-import type { DailyUserStats } from "@/types";
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { cn } from '@/lib/utils';
+import { updateDailyStats } from '../../../lib/database/data/actions-mut';
+import type { DailyUserStats } from "../../../types";
+import { Button } from '../../../components/ui/button';
+import { Textarea } from '../../../components/ui/textarea';
+import { cn } from '../../../lib/utils';
 
 interface DailyparticipationCompProps {
     userId: number;

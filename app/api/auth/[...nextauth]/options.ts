@@ -2,7 +2,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import crypto from 'crypto';
 import type { NextAuthOptions } from "next-auth";
 
-import { getUser } from '@/lib/database/auth';
+import { getUser } from '../../../../lib/database/auth';
 
 export const authOptions: NextAuthOptions = {
     providers: [

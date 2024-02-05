@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth"
 
 import { authOptions } from "../api/auth/[...nextauth]/options"
-import { getActiveChallenge } from '@/lib/database/data/actions-get';
-import NavBar from "@/components/ui/navigation/navbar"
+import { getActiveChallenge } from '../../lib/database/data/actions-get';
+import NavBar from "../../components/ui/navigation/navbar"
 
 export default async function MainLayout({
     children,

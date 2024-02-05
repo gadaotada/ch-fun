@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { signIn } from 'next-auth/react';
 import * as Yup from 'yup';
 
-import { Button } from "@/components/ui/button"
+import { Button } from "../../components/ui/button"
 import {
   Card,
   CardContent,

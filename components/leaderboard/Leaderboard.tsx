@@ -3,9 +3,9 @@ import { useState,useEffect } from 'react'
 
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Check } from "lucide-react";
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarImage } from "@/components/ui/avatar"
-import { DailyData, UserData } from '@/types';
+import { Button } from '../../components/ui/button';
+import { Avatar, AvatarImage } from "../../components/ui/avatar"
+import { DailyData, UserData } from '../../types';
 
 interface ModalProps {
     isOpen: boolean

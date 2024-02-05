@@ -1,7 +1,7 @@
 import { RowDataPacket } from 'mysql2/promise';
 
 import pool from '../conn';
-import { timeStampGen } from '@/lib/helpers';
+import { timeStampGen } from '../../../lib/helpers';
 import type { ActiveChallenge, DailyData, DailyUserStats, UserData } from '@/types';
 
 const formatTime = (isoString: string): string => {

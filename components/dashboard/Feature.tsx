@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { getActiveFeature } from "@/lib/database/data/actions-get";
+import { getActiveFeature } from "../../lib/database/data/actions-get";
 
 const FeatureComp = async () => {
 

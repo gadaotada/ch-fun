@@ -1,9 +1,9 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { ModeToggle } from "@/components/ui/theme-toggle";
-import LoginForm from "@/components/login/Login";
+import { authOptions } from "../app/api/auth/[...nextauth]/options";
+import { ModeToggle } from "../components/ui/theme-toggle";
+import LoginForm from "../components/login/Login";
 
 export default async function Home() {
 

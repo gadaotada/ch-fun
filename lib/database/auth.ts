@@ -1,9 +1,9 @@
 import { RowDataPacket } from 'mysql2/promise';
 
 import pool from './conn';
-import { timeStampGen } from '@/lib/helpers';
+import { timeStampGen } from '../../lib/helpers';
 
-import type { User } from '@/types';
+import type { User } from '../../types';
 
 //Read section 
 export const getUser = async (email: string): Promise<User | null> => {

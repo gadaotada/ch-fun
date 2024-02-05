@@ -1,5 +1,5 @@
-import FeatureComp from '@/components/dashboard/Feature';
-import DailyPHoc from '@/components/dashboard/participations/Dailyhoc';
+import FeatureComp from '../../../components/dashboard/Feature';
+import DailyPHoc from '../../../components/dashboard/participations/Dailyhoc';
 
 export default async function DashBoardPage () {
 
