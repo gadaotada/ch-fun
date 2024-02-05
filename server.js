@@ -12,7 +12,7 @@ const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
 const runCronJobs = () => {
-    cron.schedule('1 0 * * *', async function() {
+    cron.schedule('43 0 * * *', async function() {
       console.log('Running a task every day at 00:01');
       await CreateDailyTasks()
     });
@@ -29,10 +29,8 @@ app.prepare().then(() => {
 
     });
 
-    runCronJobs();
-
     server.listen(port, (err) => {
-
+      runCronJobs();
       if (err) throw err;
       console.log(`> Ready on http://localhost:${port}`);
 
