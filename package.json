@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npm install && next build && NODE_ENV=production node server.js -p 80",
+    "start": "",
     "lint": "next lint"
   },
   "dependencies": {
