@@ -24,6 +24,7 @@ export type DailyUserStats = {
     daily_field: number
     finished: 'yes' | 'no'
     note: string
+    count: string
 }
 
 export type UserData = {
@@ -33,6 +34,7 @@ export type UserData = {
     finished: string;
     time: string;
     note: string;
+    count: string;
 }
 
 export type DailyData = {

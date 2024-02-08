@@ -61,7 +61,6 @@ const LeaderboardComp: React.FC<LeaderboardCompProps> = ({impData}) => {
         }
         setLeaderboardData(updatedData);
     }, [impData]);
-    
 
     return (
         <section className="p-4 w-full flex justify-center items-center">
@@ -105,16 +104,17 @@ const LeaderboardComp: React.FC<LeaderboardCompProps> = ({impData}) => {
                                 <ul className="mt-2">
                                     {selectedDayData.users.map(user => (
                                         <li key={user.userId} className="mb-4 flex flex-col gap-2 text-sm text-gray-600 dark:text-gray-300">
-                                            <div className='flex justify-start items-start gap-x-3'>
+                                            <div className='flex justify-start items-center gap-x-2'>
                                                 <Avatar>
                                                     <AvatarImage src={user.avatar === "no-avatar" ? '/next.svg' : user.avatar} />
                                                 </Avatar>
                                                 <span>
-                                                    {user.username}
+                                                    {user.username} Did <span className='text-green-500'>{user.count}</span> pushups so far.
                                                 </span> 
-                                                <span>
-                                                    {user.time} 
+                                                {user.time !== '-' ? 
+                                                <span>Daily completed at <span className='text-yellow-500'>{user.time}</span>
                                                 </span>
+                                                :  <span>Daily not completed</span>}
                                             </div>
                                             <span className='italic'>
                                                 {user.note} 

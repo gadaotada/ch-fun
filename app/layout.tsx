@@ -35,6 +35,7 @@ export default function RootLayout({
             <Toaster
               toastOptions={{
                 className: ``,
+                duration: 4000
               }}
             />
             {children}

@@ -78,7 +78,7 @@ export const getDailyStats = async (userId: number): Promise<DailyUserStats | nu
 
         const query = `
                 SELECT 
-                    ds.indexNum, uds.id as daily_field, uds.finished, uds.note
+                    ds.indexNum, uds.id as daily_field, uds.finished, uds.note, uds.count
                 FROM \`daily-stats\` AS ds
                 LEFT JOIN \`user-daily-stats\` AS uds ON ds.id = uds.daily_stats_id
                 WHERE uds.user_id = ? AND ds.locked = 'no'
@@ -105,7 +105,7 @@ export const getTotalStats = async (): Promise<DailyData[] | null> => {
 
         const query = `
                 SELECT 
-                    uds.daily_stats_id as day, uds.note, uds.finished, uds.completed_at as time, uds.user_id as userId, ut.username, ut.avatar
+                    uds.daily_stats_id as day, uds.note, uds.finished, uds.completed_at as time, uds.user_id as userId, uds.count, ut.username, ut.avatar
                 FROM \`user-daily-stats\` AS uds
                 LEFT JOIN \`users\` AS ut ON uds.user_id = ut.id
                 `
@@ -126,6 +126,7 @@ export const getTotalStats = async (): Promise<DailyData[] | null> => {
                     time: row.time, 
                     avatar: row.avatar,
                     note: row.note,
+                    count: row.count
                 });
 
                 return acc;
