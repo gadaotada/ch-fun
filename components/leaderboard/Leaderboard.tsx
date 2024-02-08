@@ -13,12 +13,26 @@ interface ModalProps {
     children: React.ReactNode
 }
 
-const  Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+    useEffect(() => {
+        // fix to prevent scrolling from happening when the modal is open
+        const originalStyle = window.getComputedStyle(document.body).overflow;  
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = originalStyle;
+        }
+
+        return () => {
+            document.body.style.overflow = originalStyle;
+        };
+    }, [isOpen]);
+
     if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-30 z-50 flex justify-center items-center">
-            <div className="bg-white dark:bg-gray-800 rounded shadow-lg p-4 relative max-w-[700px] w-full mx-4">
+            <div className="bg-white max-h-[500px] md:max-h-[700px] dark:bg-gray-800 rounded shadow-lg p-4 relative max-w-[700px] w-full mx-4 overflow-y-auto">
                 <Button onClick={onClose} className="absolute top-2 right-2" variant={'ghost'}>
                     <Cross1Icon className="h-4 w-4 text-red-500"/>
                 </Button>
