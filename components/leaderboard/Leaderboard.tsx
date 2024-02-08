@@ -70,7 +70,7 @@ const LeaderboardComp: React.FC<LeaderboardCompProps> = ({impData}) => {
                         <div key={day} 
                             onClick={() => users.length > 0 && openModal({ day, users })}
                             className={` bg-slate-200 dark:bg-gray-800 shadow rounded p-4 transition-shadow` + 
-                            (users.length === 0 ? " opacity-60 dark:opacity-15 cursor-not-allowed min-h-[80px] touch-none" : " cursor-pointer hover:shadow-slate-700 dark:hover:shadow-slate-100")}
+                            (users.length === 0 ? " opacity-60 dark:opacity-15 cursor-not-allowed min-h-[80px] " : " cursor-pointer hover:shadow-slate-700 dark:hover:shadow-slate-100")}
                         >
                             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 text-center">Day {day}</h3>
                             {users.length > 0 ? (
