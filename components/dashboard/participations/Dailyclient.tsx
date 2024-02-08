@@ -92,7 +92,7 @@ const DailyparticipationComp: React.FC<DailyparticipationCompProps> = ({userId, 
                     <div className='border border-slate-300 dark:border-slate-700 p-2 rounded-md min-w-[300px]'>
                         <h1 className='text-center uppercase text-2xl'>Day {dailyInfo?.indexNum}</h1>
                         
-                        {dailyInfo?.finished === 'no' ? <div className='text-center min-w-[100px]'> <CountdownTimer targetDate={targetDate} /> </div> : <p className='pt-4 text-center text-3xl text-green-500 font-bold'>COMPLETED</p>}
+                        {dailyInfo?.finished === 'no' ? <div className='text-center min-w-[100px]'> <CountdownTimer/> </div> : <p className='pt-4 text-center text-3xl text-green-500 font-bold'>COMPLETED</p>}
                     </div>
                     </div>
                 <form 
