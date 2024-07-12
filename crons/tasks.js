@@ -25,6 +25,8 @@ async function CreateDailyTasks() {
    
     try {
         // Step 1: Select the current active challenge
+        let newDailyStatsId = null;
+
         const [activeChallenges] = await connection.query(
             `SELECT id FROM challenges WHERE status = 'active'`
         );
@@ -39,23 +41,31 @@ async function CreateDailyTasks() {
             `SELECT id, indexNum FROM \`daily-stats\` WHERE challenge_id = ? AND locked = 'no' LIMIT 1`, 
             [activeChallengeId]
         );
-        const { id: dailyStatsId, indexNum } = currentDayStats[0];
 
-        // Update current day's row to locked
-        await connection.query(
-            `UPDATE \`daily-stats\` SET locked = 'yes' WHERE id = ?`, 
-            [dailyStatsId]
-        );
+        if (!currentDayStats[0]) {
+            // DAY 1 case
+            const query = `INSERT INTO \`daily-stats\` (challenge_id, indexNum, daily_feature, locked) VALUES (?, ?, ?, ?)`
+            const [insertResult] = await connection.query(query, [activeChallengeId, 1, "/memes/16.jpg", "no"])
 
-        // Step 3: Insert new day's row
-        const newFeatureNumber = await getRandomInt(1, 31, activeChallengeId, connection);
-        const newIndexNum = indexNum + 1;
+            newDailyStatsId = insertResult.insertId;
+        } else {
+            const { id: dailyStatsId, indexNum } = currentDayStats[0];
+            // Update current day's row to locked
+            await connection.query(
+                `UPDATE \`daily-stats\` SET locked = 'yes' WHERE id = ?`, 
+                [dailyStatsId]
+            );
 
-        const [insertResult] = await connection.query(
-            `INSERT INTO \`daily-stats\` (challenge_id, indexNum, daily_feature, locked) VALUES (?, ?, ?, 'no')`, 
-            [activeChallengeId, newIndexNum, `/memes/${newFeatureNumber}.jpg`]
-        );
-        const newDailyStatsId = insertResult.insertId;
+            // Step 3: Insert new day's row
+            const newFeatureNumber = await getRandomInt(1, 31, activeChallengeId, connection);
+            const newIndexNum = indexNum + 1;
+
+            const [insertResult] = await connection.query(
+                `INSERT INTO \`daily-stats\` (challenge_id, indexNum, daily_feature, locked) VALUES (?, ?, ?, 'no')`, 
+                [activeChallengeId, newIndexNum, `/memes/${newFeatureNumber}.jpg`]
+            );
+            newDailyStatsId = insertResult.insertId;
+        }
 
         // Step 4: Insert a row for each user
         const [users] = await connection.query(`SELECT id FROM users`);

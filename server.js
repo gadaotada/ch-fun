@@ -5,15 +5,15 @@ const cron = require('node-cron');
 const { CreateDailyTasks } = require('./crons/tasks.js')
 
 const hostname = 'localhost'
-const port = 80
+const port = 8000
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
 const runCronJobs = () => {
-    cron.schedule('50 22 * * *', async function() {
-      console.log('Running a task every day at 00:01');
+    cron.schedule('00 00 * * *', async function() {
+      console.log('Running a task every day at 00:00');
       await CreateDailyTasks()
     });
 };

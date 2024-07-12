@@ -37,10 +37,9 @@ const DailyparticipationComp: React.FC<DailyparticipationCompProps> = ({userId, 
     const router = useRouter();
     
     const now = new Date();
-    const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 
     const handleCountChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (parseInt(e.target.value) < 0) {
+        if (e.target.value === "" || parseInt(e.target.value) <= 0) {
             setCount('0')
             return;
         }  
