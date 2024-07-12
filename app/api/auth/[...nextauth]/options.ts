@@ -19,7 +19,6 @@ export const authOptions: NextAuthOptions = {
                 // hash the pass
                 const salt = process.env.GLOBAL_SALT || 'a-default-salt'
                 const hashedEmail = crypto.pbkdf2Sync(credentials?.email, salt, 10000, 64, 'sha256').toString('hex');
-               
                 const user = await getUser(hashedEmail);
                 if (user) {
                     return {

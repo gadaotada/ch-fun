@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { toast } from 'react-hot-toast';
 import * as Yup from 'yup';
 
@@ -86,6 +86,7 @@ const DailyparticipationComp: React.FC<DailyparticipationCompProps> = ({userId, 
    
     return (
         <>
+            {dailyInfo !== null ?
             <div className='flex flex-col justify-center items-center gap-y-4'>
                 <div className='min-w-[300px]'>
 
@@ -148,6 +149,11 @@ const DailyparticipationComp: React.FC<DailyparticipationCompProps> = ({userId, 
                     Go to Leaderboard
                 </Button>
             </div>
+            :
+            <div className='w-full text-center pt-20 text-4xl font-bold'>
+                The challange starts tomorrow!
+            </div>
+            }
         </>
     );
 };
